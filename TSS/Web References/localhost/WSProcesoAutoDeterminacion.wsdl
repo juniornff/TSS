@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Input" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEncabezados">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetEncabezadosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEncabezadosResult" type="tns:ArrayOfEncabezado" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfEncabezado">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Encabezado" nillable="true" type="tns:Encabezado" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Encabezado">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="EncabazadoID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="TipoAutodeterminacion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RNC" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Periodo" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Detalles" type="tns:ArrayOfDetalle" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDetalle">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Detalle" nillable="true" type="tns:Detalle" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Detalle">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="DetalleID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="TipoDocumento" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Documento" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodigoNomina" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Empleado" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetDetalles">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetDetallesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDetallesResult" type="tns:ArrayOfDetalle" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetEncabezado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TipoAutodeterminacion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RNC" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Periodo" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="TipoDocumento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Documento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodigoNomina" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Empleado" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetEncabezadoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SetEncabezadoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEncabezadosSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEncabezados" />
+  </wsdl:message>
+  <wsdl:message name="GetEncabezadosSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEncabezadosResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDetallesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDetalles" />
+  </wsdl:message>
+  <wsdl:message name="GetDetallesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDetallesResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetEncabezadoSoapIn">
+    <wsdl:part name="parameters" element="tns:SetEncabezado" />
+  </wsdl:message>
+  <wsdl:message name="SetEncabezadoSoapOut">
+    <wsdl:part name="parameters" element="tns:SetEncabezadoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WSProcesoAutoDeterminacionSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEncabezados">
+      <wsdl:input message="tns:GetEncabezadosSoapIn" />
+      <wsdl:output message="tns:GetEncabezadosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalles">
+      <wsdl:input message="tns:GetDetallesSoapIn" />
+      <wsdl:output message="tns:GetDetallesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetEncabezado">
+      <wsdl:input message="tns:SetEncabezadoSoapIn" />
+      <wsdl:output message="tns:SetEncabezadoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSProcesoAutoDeterminacionSoap" type="tns:WSProcesoAutoDeterminacionSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEncabezados">
+      <soap:operation soapAction="http://tempuri.org/GetEncabezados" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalles">
+      <soap:operation soapAction="http://tempuri.org/GetDetalles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetEncabezado">
+      <soap:operation soapAction="http://tempuri.org/SetEncabezado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WSProcesoAutoDeterminacionSoap12" type="tns:WSProcesoAutoDeterminacionSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEncabezados">
+      <soap12:operation soapAction="http://tempuri.org/GetEncabezados" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalles">
+      <soap12:operation soapAction="http://tempuri.org/GetDetalles" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetEncabezado">
+      <soap12:operation soapAction="http://tempuri.org/SetEncabezado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSProcesoAutoDeterminacion">
+    <wsdl:port name="WSProcesoAutoDeterminacionSoap" binding="tns:WSProcesoAutoDeterminacionSoap">
+      <soap:address location="https://localhost:44327/WSProcesoAutoDeterminacion.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WSProcesoAutoDeterminacionSoap12" binding="tns:WSProcesoAutoDeterminacionSoap12">
+      <soap12:address location="https://localhost:44327/WSProcesoAutoDeterminacion.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
